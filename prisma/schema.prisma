@@ -1,8 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+//This is your Prisma schema file,
+//learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/client"
 }
 
 datasource db {
@@ -10,8 +11,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-model Task{
+model Task {
   id          String    @id @default(cuid()) @map("_id")
   title       String
   description String?
@@ -21,5 +21,5 @@ model Task{
 
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @default(now()) @updatedAt @map("updated_at")
-  userId      String    
+  userId      String
 }
